@@ -26,4 +26,16 @@ public class MainActivity extends AppCompatActivity {
         addIntent.putExtra("duplicate", false);
         getApplicationContext().sendBroadcast(addIntent);
     }
+
+    public void removeShortcut(View view) {
+        Intent shortcutIntent = new Intent(getApplicationContext(), MainActivity.class);
+        shortcutIntent.setAction(Intent.ACTION_MAIN);
+
+        Intent addIntent = new Intent();
+        addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+        addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "MyShortcut");
+
+        addIntent.setAction("com.android.launcher.action.UNINSTALL_SHORTCUT");
+        getApplicationContext().sendBroadcast(addIntent);
+    }
 }
